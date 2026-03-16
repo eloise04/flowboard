@@ -1,8 +1,13 @@
-import { describe, it, expect } from 'vitest'
+import { beforeEach, describe, it, expect } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
 import Board from './Board'
+import { setLanguage, t } from '../../../i18n'
 
 describe('Board', () => {
+  beforeEach(() => {
+    setLanguage('fr')
+  })
+
   it('renders three columns with correct titles', () => {
     render(<Board />)
     expect(screen.getByText('Ideas')).toBeInTheDocument()
@@ -22,7 +27,7 @@ describe('Board', () => {
     const addButtons = screen.getAllByRole('button', { name: /\+/ })
     fireEvent.click(addButtons[0])
 
-    const createdInput = screen.getByDisplayValue('Nouvelle note')
+    const createdInput = screen.getByDisplayValue(t.notePlaceholder)
     fireEvent.change(createdInput, { target: { value: 'Note modifiee' } })
 
     expect(screen.getByDisplayValue('Note modifiee')).toBeInTheDocument()
@@ -34,10 +39,10 @@ describe('Board', () => {
     const addButtons = screen.getAllByRole('button', { name: /\+/ })
     fireEvent.click(addButtons[0])
 
-    expect(screen.getByDisplayValue('Nouvelle note')).toBeInTheDocument()
+    expect(screen.getByDisplayValue(t.notePlaceholder)).toBeInTheDocument()
 
-    fireEvent.click(screen.getByRole('button', { name: 'Supprimer la note' }))
+    fireEvent.click(screen.getByRole('button', { name: t.deleteNote }))
 
-    expect(screen.queryByDisplayValue('Nouvelle note')).not.toBeInTheDocument()
+    expect(screen.queryByDisplayValue(t.notePlaceholder)).not.toBeInTheDocument()
   })
 })
