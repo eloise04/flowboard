@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import Board from './Board'
 
 describe('Board', () => {
@@ -14,5 +14,17 @@ describe('Board', () => {
     render(<Board />)
     const boardDiv = screen.getByText('Ideas').closest('div')?.parentElement
     expect(boardDiv).toHaveClass('board')
+  })
+
+  it('adds and edits a note from board interactions', () => {
+    render(<Board />)
+
+    const addButtons = screen.getAllByRole('button', { name: /\+/ })
+    fireEvent.click(addButtons[0])
+
+    const createdInput = screen.getByDisplayValue('Nouvelle note')
+    fireEvent.change(createdInput, { target: { value: 'Note modifiee' } })
+
+    expect(screen.getByDisplayValue('Note modifiee')).toBeInTheDocument()
   })
 })

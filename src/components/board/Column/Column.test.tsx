@@ -4,14 +4,13 @@ import Column from './Column'
 
 describe('Column', () => {
   it('renders the column title', () => {
-    render(<Column title="Test Column" notes={[]} handleAddNote={vi.fn()} />)
+    render(<Column title="Test Column" notes={[]} handleAddNote={vi.fn()} handleEditNote={vi.fn()} />)
     expect(screen.getByText('Test Column')).toBeInTheDocument()
   })
 
-  it('renders no note cards when notes array is empty', () => {
-    render(<Column title="Test Column" notes={[]} handleAddNote={vi.fn()} />)
-    const cards = screen.queryAllByText('Note')
-    expect(cards).toHaveLength(0)
+  it('renders no notes message when notes array is empty', () => {
+    render(<Column title="Test Column" notes={[]} handleAddNote={vi.fn()} handleEditNote={vi.fn()} />)
+    expect(screen.getByText('Aucune note dans cette colonne')).toBeInTheDocument()
   })
 
   it('renders note cards based on notes prop', () => {
@@ -19,18 +18,19 @@ describe('Column', () => {
       { id: '1', content: 'First note' },
       { id: '2', content: 'Second note' }
     ]
-    render(<Column title="Test Column" notes={mockNotes} handleAddNote={vi.fn()} />)
-    expect(screen.getByText('First note')).toBeInTheDocument()
-    expect(screen.getByText('Second note')).toBeInTheDocument()
+    render(<Column title="Test Column" notes={mockNotes} handleAddNote={vi.fn()} handleEditNote={vi.fn()} />)
+    expect(screen.getByDisplayValue('First note')).toBeInTheDocument()
+    expect(screen.getByDisplayValue('Second note')).toBeInTheDocument()
   })
 
   it('renders the add note button', () => {
-    render(<Column title="Test Column" notes={[]} handleAddNote={vi.fn()} />)
-    expect(screen.getByText('+ Add note')).toBeInTheDocument()
+    render(<Column title="Test Column" notes={[]} handleAddNote={vi.fn()} handleEditNote={vi.fn()} />)
+    const button = screen.getByRole('button', { name: /\+/ })
+    expect(button).toBeInTheDocument()
   })
 
   it('has the correct CSS class', () => {
-    render(<Column title="Test Column" notes={[]} handleAddNote={vi.fn()} />)
+    render(<Column title="Test Column" notes={[]} handleAddNote={vi.fn()} handleEditNote={vi.fn()} />)
     const columnDiv = screen.getByText('Test Column').closest('div')
     expect(columnDiv).toHaveClass('column')
   })
