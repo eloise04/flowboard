@@ -14,5 +14,5 @@ export type Board = {
 }
 
 export type BoardAction =
-  | { type: "ADD_NOTE"; columnId: string }
-  | { type: "DELETE_NOTE"; columnId: string; noteId: string }
+  | { type: "ADD_NOTE"; text: string; columnId: string, id: string }
+  | { type: "DELETE_NOTE"; text: string; columnId: string; id: string }

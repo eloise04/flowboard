@@ -8,4 +8,23 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  // Vitest config should be under 'test' key in a separate export or using 'vitest' property
+  // See https://vitest.dev/config/
 })
+
+export const test = {
+  globals: true,
+  environment: 'jsdom',
+  setupFiles: './src/test/setup.ts',
+  coverage: {
+    provider: 'v8',
+    reporter: ['text', 'json', 'html', 'lcov'],
+    exclude: [
+      'node_modules/',
+      'src/test/',
+      'dist/',
+      '**/*.d.ts',
+      '**/*.config.*'
+    ]
+  }
+}
