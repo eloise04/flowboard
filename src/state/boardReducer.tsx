@@ -17,6 +17,24 @@ export function boardReducer(state: Board, action: BoardAction): Board {
             }
         case 'DELETE_NOTE':
             return state
+        case 'EDIT_NOTE':
+            return  {
+                ...state,
+                columns: state.columns.map(column => {
+                    if (column.id === action.columnId) {
+                        return {
+                            ...column,
+                            notes: column.notes.map(note => {
+                                if (note.id === action.id) {
+                                    return { ...note, content: action.newText }
+                                }
+                                return note
+                            }) 
+                        }
+                    }
+                    return column
+                })
+            }
         default:
             return state
     }

@@ -8,10 +8,9 @@ describe('Column', () => {
     expect(screen.getByText('Test Column')).toBeInTheDocument()
   })
 
-  it('renders no note cards when notes array is empty', () => {
+  it('renders no notes message when notes array is empty', () => {
     render(<Column title="Test Column" notes={[]} handleAddNote={vi.fn()} />)
-    const cards = screen.queryAllByText('Note')
-    expect(cards).toHaveLength(0)
+    expect(screen.getByText('Aucune note dans cette colonne')).toBeInTheDocument()
   })
 
   it('renders note cards based on notes prop', () => {
@@ -26,7 +25,8 @@ describe('Column', () => {
 
   it('renders the add note button', () => {
     render(<Column title="Test Column" notes={[]} handleAddNote={vi.fn()} />)
-    expect(screen.getByText('+ Add note')).toBeInTheDocument()
+    const button = screen.getByRole('button', { name: /\+/ })
+    expect(button).toBeInTheDocument()
   })
 
   it('has the correct CSS class', () => {

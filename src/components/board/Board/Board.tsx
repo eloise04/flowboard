@@ -18,11 +18,16 @@ export default function Board() {
     dispatch({ type: 'ADD_NOTE', columnId, text: 'Nouvelle note', id })
     
   }
+
+  const handleEditNote = (columnId: string, id: string, newText: string) => {
+    dispatch({ type: 'EDIT_NOTE', columnId, id, newText })
+  }
+
   return (
     <div className="board">
-      <Column title={board.columns[0].title} notes={board.columns[0].notes} handleAddNote={handleAddNote} />
-      <Column title={board.columns[1].title} notes={board.columns[1].notes} handleAddNote={handleAddNote} />
-      <Column title={board.columns[2].title} notes={board.columns[2].notes} handleAddNote={handleAddNote} />
+      <Column title={board.columns[0].title} notes={board.columns[0].notes} handleAddNote={handleAddNote} handleEditNote={handleEditNote} />
+      <Column title={board.columns[1].title} notes={board.columns[1].notes} handleAddNote={handleAddNote} handleEditNote={handleEditNote} />
+      <Column title={board.columns[2].title} notes={board.columns[2].notes} handleAddNote={handleAddNote} handleEditNote={handleEditNote} />
     </div>
   )
 }
