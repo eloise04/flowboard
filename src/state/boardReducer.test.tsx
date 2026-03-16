@@ -45,7 +45,7 @@ describe('boardReducer', () => {
     expect(result.columns[1].notes).toEqual(initialState.columns[1].notes)
   })
 
-  it('returns current state for unknown action type', () => {
+  it('moves a note from one column to another on MOVE_NOTE', () => {
     const result = boardReducer(initialState, {
       type: 'MOVE_NOTE',
       fromColumnId: 'ideas',
@@ -53,6 +53,7 @@ describe('boardReducer', () => {
       id: 'n1',
     })
 
-    expect(result).toEqual(initialState)
+    expect(result.columns[0].notes).toHaveLength(0)
+    expect(result.columns[1].notes).toEqual([{ id: 'n1', content: 'Initial note' }])
   })
 })

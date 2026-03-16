@@ -31,11 +31,24 @@ export default function Board() {
     )
   }
 
+  const handleMoveNote = (fromColumnId: string, toColumnId: string, id: string) => {
+    dispatch({ type: 'MOVE_NOTE', fromColumnId, toColumnId, id })
+  }
+
   return (
     <div className="board">
-      <Column title={board.columns[0].title} notes={board.columns[0].notes} handleAddNote={handleAddNote} handleEditNote={handleEditNote} handleDeleteNote={handleDeleteNote} />
-      <Column title={board.columns[1].title} notes={board.columns[1].notes} handleAddNote={handleAddNote} handleEditNote={handleEditNote} handleDeleteNote={handleDeleteNote} />
-      <Column title={board.columns[2].title} notes={board.columns[2].notes} handleAddNote={handleAddNote} handleEditNote={handleEditNote} handleDeleteNote={handleDeleteNote} />
+      {board.columns.map((column) => (
+        <Column
+          key={column.id}
+          columnId={column.id}
+          title={column.title}
+          notes={column.notes}
+          handleAddNote={handleAddNote}
+          handleEditNote={handleEditNote}
+          handleDeleteNote={handleDeleteNote}
+          handleMoveNote={handleMoveNote}
+        />
+      ))}
     </div>
   )
 }

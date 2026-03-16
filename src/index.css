@@ -37,6 +37,18 @@ body {
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
+.card[readonly] {
+  cursor: grab;
+}
+
+.card[readonly]:active {
+  cursor: grabbing;
+}
+
+.card:not([readonly]) {
+  cursor: text;
+}
+
 .add-btn {
   width: 100%;
   padding: 8px;

@@ -46,6 +46,41 @@ export function boardReducer(state: Board, action: BoardAction): Board {
                     return column
                 })
             }
+        case 'MOVE_NOTE': {
+            if (action.fromColumnId === action.toColumnId) {
+                return state
+            }
+
+            const movedNote = state.columns
+                .find(column => column.id === action.fromColumnId)
+                ?.notes.find(note => note.id === action.id)
+
+            if (!movedNote) {
+                return state
+            }
+
+            return {
+                ...state,
+                columns: state.columns.map(column => {
+                    if (column.id === action.fromColumnId) {
+                        return {
+                            ...column,
+                            notes: column.notes.filter(note => note.id !== action.id)
+                        }
+                    }
+
+                    if (column.id === action.toColumnId) {
+                        return {
+                            ...column,
+                            notes: [...column.notes, movedNote]
+                        }
+                    }
+
+                    return column
+                })
+            }
+        }
+
         default:
             return state
     }
