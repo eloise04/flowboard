@@ -2,7 +2,7 @@ import Card from "../NoteCard/NoteCard"
 import { type NoteCard } from "../../../types/board"
 import { t } from "../../../i18n"
 
-export default function Column({ title, notes, handleAddNote, handleEditNote }: { readonly title: string, readonly notes: readonly NoteCard[], readonly handleAddNote: (columnId: string) => void, readonly handleEditNote: (columnId: string, id: string, newText: string) => void }) {
+export default function Column({ title, notes, handleAddNote, handleEditNote, handleDeleteNote }: { readonly title: string, readonly notes: readonly NoteCard[], readonly handleAddNote: (columnId: string) => void, readonly handleEditNote: (columnId: string, id: string, newText: string) => void, readonly handleDeleteNote: (columnId: string, id: string) => void }) {
   return (
     <div className="column">
       <h3>{title}</h3>
@@ -11,7 +11,7 @@ export default function Column({ title, notes, handleAddNote, handleEditNote }: 
         <p>{t.noNotes}</p>
       ) : (
         notes.map((note) => (
-          <Card key={note.id} content={note.content} handleEditNote={(newText) => handleEditNote(title.toLowerCase(), note.id, newText)} />
+          <Card key={note.id} content={note.content} handleEditNote={(newText) => handleEditNote(title.toLowerCase(), note.id, newText)} handleDeleteNote={() => handleDeleteNote(title.toLowerCase(), note.id)} />
         ))
       )}
 

@@ -27,4 +27,17 @@ describe('Board', () => {
 
     expect(screen.getByDisplayValue('Note modifiee')).toBeInTheDocument()
   })
+
+  it('adds then deletes a note from board interactions', () => {
+    render(<Board />)
+
+    const addButtons = screen.getAllByRole('button', { name: /\+/ })
+    fireEvent.click(addButtons[0])
+
+    expect(screen.getByDisplayValue('Nouvelle note')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Supprimer la note' }))
+
+    expect(screen.queryByDisplayValue('Nouvelle note')).not.toBeInTheDocument()
+  })
 })
