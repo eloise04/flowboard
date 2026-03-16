@@ -25,4 +25,19 @@ describe('NoteCard', () => {
 
     expect(handleEditNote).toHaveBeenCalledWith('Mise a jour')
   })
+
+  it('does not render delete button when handleDeleteNote is not provided', () => {
+    render(<Card content="Initial" />)
+
+    expect(screen.queryByRole('button', { name: t.deleteNote })).not.toBeInTheDocument()
+  })
+
+  it('renders delete button and calls handleDeleteNote on click', () => {
+    const handleDeleteNote = vi.fn()
+    render(<Card content="Initial" handleDeleteNote={handleDeleteNote} />)
+
+    fireEvent.click(screen.getByRole('button', { name: t.deleteNote }))
+
+    expect(handleDeleteNote).toHaveBeenCalledTimes(1)
+  })
 })

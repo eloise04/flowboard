@@ -33,7 +33,7 @@ describe('boardReducer', () => {
     expect(result.columns[0].notes[0].content).toBe('Updated note')
   })
 
-  it('keeps state unchanged on DELETE_NOTE', () => {
+  it('deletes note from targeted column on DELETE_NOTE', () => {
     const result = boardReducer(initialState, {
       type: 'DELETE_NOTE',
       columnId: 'ideas',
@@ -41,7 +41,8 @@ describe('boardReducer', () => {
       text: 'ignored',
     })
 
-    expect(result).toEqual(initialState)
+    expect(result.columns[0].notes).toHaveLength(0)
+    expect(result.columns[1].notes).toEqual(initialState.columns[1].notes)
   })
 
   it('returns current state for unknown action type', () => {
