@@ -1,11 +1,12 @@
-import { t, setLanguage, getCurrentLanguage } from '../../i18n'
+import { t, setLanguage, useLanguage } from '../../i18n'
 
 export default function Topbar() {
+  const lang = useLanguage()
+
   const toggleLanguage = () => {
-    const newLang = getCurrentLanguage() === 'fr' ? 'en' : 'fr'
+    const newLang = lang === 'fr' ? 'en' : 'fr'
     setLanguage(newLang)
-    // Force re-render
-    globalThis.location.reload()
+    window.location.reload()
   }
 
   return (
@@ -13,7 +14,7 @@ export default function Topbar() {
       <h2>{t.appName}</h2>
       <div>
         <button onClick={toggleLanguage}>
-          {getCurrentLanguage() === 'fr' ? 'EN' : 'FR'}
+          {lang === 'fr' ? 'EN' : 'FR'}
         </button>
         <button>+ {t.addNote}</button>
       </div>

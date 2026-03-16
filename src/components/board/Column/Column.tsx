@@ -1,8 +1,10 @@
 import Card from "../NoteCard/NoteCard"
 import { type NoteCard } from "../../../types/board"
-import { t } from "../../../i18n"
+import { t, useLanguage } from "../../../i18n"
 
 export default function Column({ title, notes, handleAddNote, handleEditNote, handleDeleteNote }: { readonly title: string, readonly notes: readonly NoteCard[], readonly handleAddNote: (columnId: string) => void, readonly handleEditNote: (columnId: string, id: string, newText: string) => void, readonly handleDeleteNote: (columnId: string, id: string) => void }) {
+  useLanguage()
+
   return (
     <div className="column">
       <h3>{title}</h3>

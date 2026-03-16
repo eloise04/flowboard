@@ -2,8 +2,11 @@ import Column from "../Column/Column"
 import { useReducer } from 'react'
 import { boardReducer } from '../../../state/boardReducer'
 import { type Board as BoardType } from '../../../types/board'
+import { t, useLanguage } from "../../../i18n"
 
 export default function Board() {
+  useLanguage()
+
   const initialState: BoardType = {
     columns: [
       { id: 'ideas', title: 'Ideas', notes: [] },
@@ -15,7 +18,7 @@ export default function Board() {
 
   const handleAddNote = (columnId: string) => {
     const id = `${columnId}-${Date.now()}`;
-    dispatch({ type: 'ADD_NOTE', columnId, text: 'Nouvelle note', id })
+    dispatch({ type: 'ADD_NOTE', columnId, text: t.notePlaceholder, id })
     
   }
 
