@@ -12,10 +12,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
       with:
         node-version: '20'
         cache: 'npm'
@@ -30,7 +30,7 @@ jobs:
       run: npm test -- --run --coverage
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673
       with:
         file: ./coverage/lcov.info
 
@@ -40,12 +40,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
       with:
         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
       with:
         node-version: '20'
         cache: 'npm'
@@ -57,7 +57,7 @@ jobs:
       run: npm test -- --run --coverage
 
     - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v3
+      uses: SonarSource/sonarqube-scan-action@139bee59aa163c3c940946cc2dd694ba3914584d
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
