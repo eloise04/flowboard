@@ -7,11 +7,11 @@ const DRAG_DATA_TYPE = 'text/plain'
 export default function Column({ columnId, title, notes, handleAddNote, handleEditNote, handleDeleteNote, handleMoveNote }: { readonly columnId: string, readonly title: string, readonly notes: readonly NoteCard[], readonly handleAddNote: (columnId: string) => void, readonly handleEditNote: (columnId: string, id: string, newText: string) => void, readonly handleDeleteNote: (columnId: string, id: string) => void, readonly handleMoveNote: (fromColumnId: string, toColumnId: string, id: string) => void }) {
   useLanguage()
 
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+  const handleDragOver = (event: React.DragEvent<HTMLElement>) => {
     event.preventDefault()
   }
 
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = (event: React.DragEvent<HTMLElement>) => {
     event.preventDefault()
 
     const data = event.dataTransfer.getData(DRAG_DATA_TYPE)
