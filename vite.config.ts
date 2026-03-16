@@ -3,13 +3,19 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import babel from '@rolldown/plugin-babel'
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [
-    react(),
-    babel({ presets: [reactCompilerPreset()] })
-  ],
-  // Vitest config should be under 'test' key in a separate export or using 'vitest' property
-  // See https://vitest.dev/config/
+export default defineConfig(() => {
+  const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
+  const base = repositoryName ? `/${repositoryName}/` : '/'
+
+  return {
+    base,
+    plugins: [
+      react(),
+      babel({ presets: [reactCompilerPreset()] })
+    ],
+    // Vitest config should be under 'test' key in a separate export or using 'vitest' property
+    // See https://vitest.dev/config/
+  }
 })
 
 export const test = {
