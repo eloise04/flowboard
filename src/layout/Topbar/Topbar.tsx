@@ -6,7 +6,7 @@ export default function Topbar() {
   const toggleLanguage = () => {
     const newLang = lang === 'fr' ? 'en' : 'fr'
     setLanguage(newLang)
-    window.location.reload()
+    globalThis.location.reload()
   }
 
   return (
