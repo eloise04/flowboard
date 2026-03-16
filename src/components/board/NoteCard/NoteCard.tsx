@@ -1,3 +1,3 @@
-export default function Card() {
-  return <div className="card">Note</div>
+export default function Card({ content }: { readonly content?: string }) {
+  return <div className="card">{content || "Note"}</div>
 }
