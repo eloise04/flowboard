@@ -1,4 +1,5 @@
 import { t, setLanguage, useLanguage } from '../../i18n'
+import styles from './Topbar.module.css'
 
 export default function Topbar() {
   const lang = useLanguage()
@@ -13,10 +14,9 @@ export default function Topbar() {
     <div className="topbar">
       <h2>{t.appName}</h2>
       <div>
-        <button onClick={toggleLanguage}>
+        <button className={styles.langBtn} onClick={toggleLanguage}>
           {lang === 'fr' ? 'EN' : 'FR'}
         </button>
-        <button>+ {t.addNote}</button>
       </div>
     </div>
   )

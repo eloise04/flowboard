@@ -19,11 +19,11 @@ beforeEach(() => {
 })
 
 describe('Topbar', () => {
-  it('renders app title and add button', () => {
+  it('renders app title and language toggle button', () => {
     render(<Topbar />)
 
     expect(screen.getByText('Flowboard')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: '+ Ajouter une note' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'EN' })).toBeInTheDocument()
   })
 
   it('calls setLanguage when toggling language', () => {

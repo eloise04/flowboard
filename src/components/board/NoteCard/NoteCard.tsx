@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { t } from "../../../i18n"
+import styles from "./NoteCard.module.css"
 
 const DRAG_DATA_TYPE = 'text/plain'
 
@@ -28,7 +29,7 @@ export default function Card({ noteId, columnId, content, handleEditNote, handle
   }
 
   return (
-    <div className="card-container">
+    <div className={`card-container ${styles.container}`}>
       <input
         className="card"
         value={inputValue}
@@ -40,8 +41,12 @@ export default function Card({ noteId, columnId, content, handleEditNote, handle
         onChange={handleChange}
       />
       {handleDeleteNote && (
-        <button className="delete-btn" onClick={handleDeleteNote}>
-          {t.deleteNote}
+        <button
+          className={styles.deleteBtn}
+          aria-label={t.deleteNote}
+          onClick={handleDeleteNote}
+        >
+          ×
         </button>
       )}
     </div>
