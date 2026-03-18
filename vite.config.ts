@@ -5,7 +5,7 @@ import babel from '@rolldown/plugin-babel'
 // https://vite.dev/config/
 export default defineConfig(() => {
   const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
-  const base = repositoryName ? `/${repositoryName}/` : '/'
+  const base = process.env.VITE_BASE_PATH ?? (repositoryName ? `/${repositoryName}/` : '/')
 
   return {
     base,
