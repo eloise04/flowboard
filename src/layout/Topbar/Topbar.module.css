@@ -1,3 +1,10 @@
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.figmaBtn,
 .langBtn {
   padding: 5px 14px;
   border: 2px solid rgba(255, 220, 140, 0.45);
@@ -12,13 +19,55 @@
   transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
 }
 
+.figmaBtn:hover,
 .langBtn:hover {
   background: rgba(255, 233, 125, 0.25);
   border-color: rgba(255, 220, 140, 0.85);
   transform: translateY(-1px);
 }
 
+.figmaBtn:active,
 .langBtn:active {
   transform: translateY(0px);
   background: rgba(255, 233, 125, 0.4);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 14, 5, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 30;
+}
+
+.modal {
+  width: min(95vw, 900px);
+  background: #fff7e3;
+  border: 2px solid #c58a3d;
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  padding: 10px;
+}
+
+.closeBtn {
+  display: block;
+  margin-left: auto;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  border: 1px solid #a66e24;
+  border-radius: 6px;
+  background: #ffe3af;
+  color: #4d2f0d;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.figmaFrame {
+  width: 100%;
+  height: min(70vh, 520px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }

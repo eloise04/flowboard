@@ -9,9 +9,9 @@ export default function Board() {
 
   const initialState: BoardType = {
     columns: [
-      { id: 'ideas', title: 'Ideas', notes: [] },
-      { id: 'doing', title: 'Doing', notes: [] },
-      { id: 'done', title: 'Done', notes: [] }
+      { id: 'ideas', title: t.ideas, notes: [] },
+      { id: 'doing', title: t.doing, notes: [] },
+      { id: 'done', title: t.done, notes: [] }
     ]
   }
   const [board, dispatch] = useReducer(boardReducer, initialState)

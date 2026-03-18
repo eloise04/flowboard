@@ -10,9 +10,9 @@ describe('Board', () => {
 
   it('renders three columns with correct titles', () => {
     render(<Board />)
-    expect(screen.getByText('Ideas')).toBeInTheDocument()
-    expect(screen.getByText('Doing')).toBeInTheDocument()
-    expect(screen.getByText('Done')).toBeInTheDocument()
+    expect(screen.getByText(t.ideas)).toBeInTheDocument()
+    expect(screen.getByText(t.doing)).toBeInTheDocument()
+    expect(screen.getByText(t.done)).toBeInTheDocument()
   })
 
   it('renders the board container', () => {
@@ -65,8 +65,8 @@ describe('Board', () => {
 
     fireEvent.dragStart(createdInput, { dataTransfer })
 
-    const ideasColumn = screen.getByText('Ideas').closest('section')
-    const doingColumn = screen.getByText('Doing').closest('section')
+    const ideasColumn = screen.getByText(t.ideas).closest('section')
+    const doingColumn = screen.getByText(t.doing).closest('section')
     expect(ideasColumn).not.toBeNull()
     expect(doingColumn).not.toBeNull()
 
