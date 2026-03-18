@@ -29,14 +29,29 @@ body {
 }
 
 .topbar {
-  height: 60px;
-  background: rgba(255, 250, 240, 0.84);
-  backdrop-filter: blur(1px);
+  height: 64px;
+  background:
+    linear-gradient(180deg, #8b5a33 0%, #6d4425 60%, #4c2f18 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+  padding: 0 28px;
+  box-shadow:
+    0 3px 10px rgba(34, 22, 10, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+
+  & h2 {
+    margin: 0;
+    font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ffe9b0;
+    text-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.5),
+      0 0 12px rgba(255, 220, 120, 0.3);
+    letter-spacing: 0.06em;
+  }
 }
 
 .board {
@@ -45,14 +60,36 @@ body {
   padding: 24px;
   overflow-x: auto;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .column {
-  background: #ebecf0;
+  background:
+    linear-gradient(160deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 100%),
+    rgba(109, 68, 37, 0.18);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(109, 68, 37, 0.28);
+  box-shadow:
+    0 4px 18px rgba(34, 22, 10, 0.22),
+    inset 0 1px 0 rgba(255,255,255,0.25);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 280px;
   min-height: 400px;
+
+  & > h3 {
+    margin: 0 0 16px 0;
+    text-align: center;
+    font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #3d1f08;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed rgba(109, 68, 37, 0.4);
+  }
 }
 
 .card {
@@ -153,7 +190,28 @@ body {
 
 .add-btn {
   width: 100%;
-  padding: 8px;
+  padding: 9px 12px;
+  margin-top: 8px;
+  border: 2px dashed rgba(109, 68, 37, 0.45);
+  border-radius: 6px;
+  background: rgba(255, 250, 235, 0.35);
+  color: #6d4425;
+  font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+  font-size: 0.88rem;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+.add-btn:hover {
+  background: rgba(255, 233, 125, 0.5);
+  border-color: rgba(109, 68, 37, 0.75);
+  transform: translateY(-1px);
+}
+
+.add-btn:active {
+  transform: translateY(0px);
+  background: rgba(255, 233, 125, 0.7);
 }
 
 @media (max-width: 768px) {

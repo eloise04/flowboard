@@ -1,0 +1,24 @@
+.langBtn {
+  padding: 5px 14px;
+  border: 2px solid rgba(255, 220, 140, 0.45);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffe9b0;
+  font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.langBtn:hover {
+  background: rgba(255, 233, 125, 0.25);
+  border-color: rgba(255, 220, 140, 0.85);
+  transform: translateY(-1px);
+}
+
+.langBtn:active {
+  transform: translateY(0px);
+  background: rgba(255, 233, 125, 0.4);
+}

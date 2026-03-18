@@ -1,5 +1,7 @@
 # Flowboard
 
+**Site web** : [https://eloise04.github.io/flowboard/](https://eloise04.github.io/flowboard/)
+
 Flowboard est un tableau Kanban interactif développé en React et TypeScript. Ce projet a été réalisé pour mettre en avant mes compétences en développement front-end.
 
 ## Objectif
@@ -23,6 +25,7 @@ Ce projet sert de vitrine pour démontrer mes compétences dans les technologies
 - [Vite](https://vitejs.dev/) pour le bundling et le serveur de développement
 - [Vitest](https://vitest.dev/) + [React Testing Library](https://testing-library.com/) pour les tests
 - CSS Modules pour le styling
+
 
 ## Lancer le projet
 
